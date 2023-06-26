@@ -1,0 +1,25 @@
+.modal {
+    position: absolute;
+    visibility: visible;
+    top: 300px;
+    left: 50px;
+    width: 360px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.button {
+    border: none;
+    outline: none;
+    background-color: #fff;
+    display: flex;
+    justify-content: flex-start;
+    padding: 12px;
+
+    font-family: Roboto, sans-serif;
+    font-size: 14px;
+
+    visibility: visible;
+    z-index: 500;
+}

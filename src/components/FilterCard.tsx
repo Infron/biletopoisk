@@ -19,7 +19,7 @@ const FilterCard = () => {
 
     return (
         <div className={classNames('card', styles.filter)}>
-            <h3>Фильтры поиска</h3>
+            <h3 style={{marginBottom: 16}}>Фильтры поиска</h3>
             <InputForm title='Название' name='title'/>
             <DropDownImport title='Жанр' name='genre' values={genres}/>
             {!isLoading && !error && <DropDownImport title='Кинотеатр' name='cinema' values={cinemas}/>}

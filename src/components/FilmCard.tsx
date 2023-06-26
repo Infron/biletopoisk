@@ -10,6 +10,7 @@ import DeleteButton from "@/components/DeleteButton";
 import Modal from "@/components/Modal";
 import {createPortal} from "react-dom";
 import {genres} from "@/app/genres";
+import altPic from '../../public/photo.svg';
 
 const FilmCard = ({filmInfo}: { filmInfo: FilmInfo }) => {
     const router = useRouter();
@@ -26,21 +27,25 @@ const FilmCard = ({filmInfo}: { filmInfo: FilmInfo }) => {
                 width={100}
                 height={120}
                 style={{objectFit: "cover"}}
-                alt='Poster'
+                alt={altPic}
             />
-            <div>
-                <button
-                    className={styles.title}
-                    type='button'
-                    onClick={() => router.push(`film/${filmInfo.id}`)}
-                >{filmInfo.title}</button>
-                <p className={styles.about}>{genres[filmInfo.genre]}</p>
-            </div>
-            <div>
-                {isModalOpen && createPortal(<Modal filmId={filmInfo.id}
-                                                    modalOpen={() => setIsModalOpen(openModal)}/>, document.body)}
-                <Counter filmId={filmInfo.id} modalOpen={() => setIsModalOpen(openModal)}/>
-                {isInCart && <DeleteButton onClickAction={() => setIsModalOpen(openModal)}/>}
+            <div className={styles.description}>
+                <div>
+                    <button
+                        className={styles.title}
+                        type='button'
+                        onClick={() => router.push(`film/${filmInfo.id}`)}
+                    >{filmInfo.title}</button>
+                    <p className={styles.about}>{genres[filmInfo.genre]}</p>
+                </div>
+                <div className={styles.counter}>
+                    {isModalOpen && createPortal(
+                        <Modal filmId={filmInfo.id} modalOpen={() => setIsModalOpen(openModal)}/>,
+                        document.body
+                    )}
+                    <Counter filmId={filmInfo.id} modalOpen={() => setIsModalOpen(openModal)}/>
+                    {isInCart && <DeleteButton onClickAction={() => setIsModalOpen(openModal)}/>}
+                </div>
             </div>
         </div>
     );

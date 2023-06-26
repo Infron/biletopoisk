@@ -4,4 +4,10 @@
     height: max-content;
     position: sticky;
     top: calc(6vh + 24px);
+    display: flex;
+    flex-direction: column;
+}
+
+.input {
+    width: 100%;
 }

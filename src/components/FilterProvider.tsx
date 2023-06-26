@@ -8,15 +8,10 @@ const FilterProvider = ({children}) => {
     const searchParams = useSearchParams();
     const {data, isLoading, error} = useGetCinemasQuery();
 
-    if (isLoading) {
-        return <div>Loading...</div>
+    let cinema = undefined;
+    if (data) {
+        cinema = data.find(el => el.id === searchParams.get('cinema'));
     }
-
-    if (error || !data) {
-        return <div>No filmo</div>
-    }
-
-    const cinema = data.find(el => el.id === searchParams.get('cinema'));
 
     return (
         <FilterContext.Provider value={cinema ? cinema.movieIds : undefined}>

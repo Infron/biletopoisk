@@ -37,12 +37,34 @@ a {
   font-weight: 700;
 }
 
-.subtitle {
-
-}
-
 .main {
   display: flex;
+}
+
+.input {
+  display: flex;
+  padding: 10px 16px;
+  align-items: center;
+  gap: 8px;
+  align-self: stretch;
+  color: #999FA6;
+  margin-bottom: 16px;
+  width: 100%;
+
+  border-radius: 8px;
+  border: 1px solid #E1E3E6;
+  background: #FFF;
+}
+
+.input:hover {
+  color: #1B1F23;
+  border-color: #F50;
+}
+
+.input:focus {
+  color: #1B1F23;
+  border: 1px solid #F50;
+  outline: none;
 }
 
 .card {
@@ -50,6 +72,4 @@ a {
   border-radius: 8px;
   background: #FFF;
   width: 100%;
-
-  transition: 1s;
 }

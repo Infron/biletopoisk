@@ -2,7 +2,7 @@
 
 import React from "react";
 import {useSelector} from "react-redux";
-import { selectStoredFilms, selectTotalTicketsAmount} from "@/redux/cart/selector";
+import {selectStoredFilms, selectTotalTicketsAmount} from "@/redux/cart/selector";
 import FilmList from "@/components/FilmList";
 
 export const CartContext = React.createContext(false)

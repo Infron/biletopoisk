@@ -46,7 +46,7 @@ const InputForm = ({title, name}: { title: string, name: string }) => {
     return (
         <div>
             <p>{title}</p>
-            <input type='text' value={value} onChange={handleChange}/>
+            <input className='input' type='text' value={value || ''} onChange={handleChange}/>
         </div>
     )
 };

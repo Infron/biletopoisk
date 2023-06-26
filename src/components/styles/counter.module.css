@@ -1,0 +1,37 @@
+.button {
+    padding: 4px;
+    border-radius: 4px;
+    width: 20px;
+    height: 20px;
+    box-sizing: border-box;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #FF5500;
+    border: none;
+    outline: none;
+}
+
+.button:hover {
+    background-color: #E94E00;
+}
+
+.button:disabled {
+    background-color: #FFA375;
+}
+
+.counter {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.text {
+    color: #1B1F23;
+    font-size: 20px;
+    font-family: Roboto, sans-serif;
+    font-weight: 700;
+    line-height: 20px;
+    cursor: default;
+}
