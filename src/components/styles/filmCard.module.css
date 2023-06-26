@@ -1,0 +1,28 @@
+.filmCard {
+    display: flex;
+    margin-bottom: 16px;
+}
+
+.image {
+    border-radius: 8px;
+    margin-right: 24px;
+}
+
+.title {
+    font-family: Roboto, sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+
+    margin-bottom: 8px;
+
+    background-color: #FFFFFF;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.about {
+    font-family: Roboto, sans-serif;
+    font-style: italic;
+    font-size: 16px;
+}

@@ -1,25 +1,45 @@
-import React from 'react';
+import React, {useCallback, useContext, useState} from 'react';
+import {FilmInfo} from "@/types";
+import Image from 'next/image'
+import {useRouter} from "next/navigation";
+import styles from './styles/filmCard.module.css'
+import classNames from "classnames";
+import Counter from "@/components/Counter";
+import {CartContext} from "@/app/cart/page";
+import DeleteButton from "@/components/DeleteButton";
+import Modal from "@/components/Modal";
+import {createPortal} from "react-dom";
 
-interface FilmInfo {
-    title: string,
-    posterUrl: string,
-    releaseYear: number,
-    description: string,
-    genre: string,
-    id: string,
-    rating: number,
-    director: string,
-    reviewIds: [string],
+const FilmCard = ({ filmInfo }: {filmInfo: FilmInfo}) => {
+    const router = useRouter();
+    const isInCart = useContext(CartContext);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const openModal = useCallback((isOpen) => !isOpen, [isModalOpen])
 
-}
-
-const FilmCard = ( filmInfo: FilmInfo ) => {
     return (
-        <div>
+        <div className={classNames(styles.filmCard, 'card')}>
             <Image
+                className={styles.image}
                 src={filmInfo.posterUrl}
-
+                loading="lazy"
+                width={100}
+                height={120}
+                style={{objectFit: "cover"}}
+                alt='Poster'
             />
+            <div>
+                <button
+                    className={styles.title}
+                    type='button'
+                    onClick={() => router.push(`film/${filmInfo.id}`)}
+                >{filmInfo.title}</button>
+                <p className={styles.about}>{filmInfo.genre}</p>
+            </div>
+            <div>
+                {isModalOpen && createPortal(<Modal filmId={filmInfo.id} modalOpen={() => setIsModalOpen(openModal)} />, document.body)}
+                <Counter filmId={filmInfo.id} modalOpen={() => setIsModalOpen(openModal)} />
+                { isInCart && <DeleteButton onClickAction={() => setIsModalOpen(openModal)}/>}
+            </div>
         </div>
     );
 };
