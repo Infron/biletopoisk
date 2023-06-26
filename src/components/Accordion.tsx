@@ -11,31 +11,31 @@ type AccordionState = {
 
 const AccordionContext: React.Context<AccordionState> = React.createContext(undefined);
 
-const Accordion = ({ children }: { children: [typeof Accordion.Question] }): React.ReactNode => {
+const Accordion = ({children}: { children: [typeof Accordion.Question] }): React.ReactNode => {
     const [activeQuestion, setActiveQuestion] = useState();
 
     const switchQuestion = useCallback((title: string) => {
         // noinspection TypeScriptValidateTypes
-        setActiveQuestion( (activeQuestion)  =>
+        setActiveQuestion((activeQuestion) =>
             activeQuestion === title ? undefined : title
         );
     }, [])
 
     return (
-        <AccordionContext.Provider value={{ activeQuestion, switchQuestion }}>
-            { children }
+        <AccordionContext.Provider value={{activeQuestion, switchQuestion}}>
+            {children}
         </AccordionContext.Provider>
     );
 };
 
-Accordion.Question = ({ children, title }: { children: HTMLParagraphElement, title: string }): React.ReactNode => {
-    const { activeQuestion, switchQuestion } = useContext(AccordionContext);
+Accordion.Question = ({children, title}: { children: HTMLParagraphElement, title: string }): React.ReactNode => {
+    const {activeQuestion, switchQuestion} = useContext(AccordionContext);
 
     return (
         <div className={classNames(styles.question, 'card')}>
-            <div onClick={ () => switchQuestion(title) }>
-                <h1 className='title' >{ title }</h1>
-                { activeQuestion === title && <div style={{marginTop: 16}}>{ children }</div>}
+            <div onClick={() => switchQuestion(title)}>
+                <h1 className='title'>{title}</h1>
+                {activeQuestion === title && <div style={{marginTop: 16}}>{children}</div>}
             </div>
 
         </div>

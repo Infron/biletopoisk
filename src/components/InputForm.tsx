@@ -16,8 +16,8 @@ function useDebounce<T>(value: T, delay?: number): T {
     return debouncedValue
 }
 
-const InputForm = ({ title, name, inputType, initialValue }: {title: string, name: string, inputType: string}) => {
-    const [value, setValue] = useState<string>(initialValue);
+const InputForm = ({title, name}: { title: string, name: string }) => {
+    const [value, setValue] = useState<string>('');
     const debouncedValue = useDebounce<string>(value, 500);
     const searchParams = useSearchParams();
     const router = useRouter();
@@ -38,14 +38,15 @@ const InputForm = ({ title, name, inputType, initialValue }: {title: string, nam
     )
 
     useEffect(() => {
-        router.push( pathname + '?' + createQueryString(name, debouncedValue))
+        if (value !== '') {
+            router.push(pathname + '?' + createQueryString(name, debouncedValue))
+        }
     }, [debouncedValue])
 
     return (
         <div>
             <p>{title}</p>
-
-            <input type='text' value={initialValue ? initialValue : value} onChange={handleChange} />
+            <input type='text' value={value} onChange={handleChange}/>
         </div>
     )
 };

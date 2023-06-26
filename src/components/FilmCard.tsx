@@ -11,7 +11,7 @@ import Modal from "@/components/Modal";
 import {createPortal} from "react-dom";
 import {genres} from "@/app/genres";
 
-const FilmCard = ({ filmInfo }: {filmInfo: FilmInfo}) => {
+const FilmCard = ({filmInfo}: { filmInfo: FilmInfo }) => {
     const router = useRouter();
     const isInCart = useContext(CartContext);
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -37,9 +37,10 @@ const FilmCard = ({ filmInfo }: {filmInfo: FilmInfo}) => {
                 <p className={styles.about}>{genres[filmInfo.genre]}</p>
             </div>
             <div>
-                {isModalOpen && createPortal(<Modal filmId={filmInfo.id} modalOpen={() => setIsModalOpen(openModal)} />, document.body)}
-                <Counter filmId={filmInfo.id} modalOpen={() => setIsModalOpen(openModal)} />
-                { isInCart && <DeleteButton onClickAction={() => setIsModalOpen(openModal)}/>}
+                {isModalOpen && createPortal(<Modal filmId={filmInfo.id}
+                                                    modalOpen={() => setIsModalOpen(openModal)}/>, document.body)}
+                <Counter filmId={filmInfo.id} modalOpen={() => setIsModalOpen(openModal)}/>
+                {isInCart && <DeleteButton onClickAction={() => setIsModalOpen(openModal)}/>}
             </div>
         </div>
     );
