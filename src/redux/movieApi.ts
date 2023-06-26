@@ -12,4 +12,4 @@ export const movieApi = createApi({
     }),
 });
 
-export const { useGetMoviesQuery, useGetMovieQuery } = movieApi;
+export const { useGetMoviesQuery, useGetMovieQuery, useGetReviewsQuery } = movieApi;

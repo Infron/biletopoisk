@@ -2,6 +2,8 @@
 
 import React from "react";
 import {useGetMovieQuery} from "@/redux/movieApi";
+import FilmAbout from "@/components/FilmAbout";
+import ReviewList from "@/components/ReviewList";
 
 export default function Film({ params }: { params: { id: number }}) {
     const {data, isLoading, error} = useGetMovieQuery(params.id);
@@ -16,7 +18,8 @@ export default function Film({ params }: { params: { id: number }}) {
 
     return (
         <div>
-            {`Film = ${data.title}`}
+            <FilmAbout filmInfo={data}/>
+            <ReviewList filmId={data.id}/>
         </div>
     );
 }

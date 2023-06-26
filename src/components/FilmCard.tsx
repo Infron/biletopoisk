@@ -9,6 +9,7 @@ import {CartContext} from "@/app/cart/page";
 import DeleteButton from "@/components/DeleteButton";
 import Modal from "@/components/Modal";
 import {createPortal} from "react-dom";
+import {genres} from "@/app/genres";
 
 const FilmCard = ({ filmInfo }: {filmInfo: FilmInfo}) => {
     const router = useRouter();
@@ -33,7 +34,7 @@ const FilmCard = ({ filmInfo }: {filmInfo: FilmInfo}) => {
                     type='button'
                     onClick={() => router.push(`film/${filmInfo.id}`)}
                 >{filmInfo.title}</button>
-                <p className={styles.about}>{filmInfo.genre}</p>
+                <p className={styles.about}>{genres[filmInfo.genre]}</p>
             </div>
             <div>
                 {isModalOpen && createPortal(<Modal filmId={filmInfo.id} modalOpen={() => setIsModalOpen(openModal)} />, document.body)}

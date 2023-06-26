@@ -1,6 +1,8 @@
 'use client'
 
 import React, {useCallback, useContext, useState} from 'react';
+import styles from './styles/accordion.module.css';
+import classNames from "classnames";
 
 type AccordionState = {
     activeQuestion: string | undefined,
@@ -30,9 +32,12 @@ Accordion.Question = ({ children, title }: { children: HTMLParagraphElement, tit
     const { activeQuestion, switchQuestion } = useContext(AccordionContext);
 
     return (
-        <div>
-            <button onClick={ () => switchQuestion(title) }><h1>{ title }</h1></button>
-            { activeQuestion === title && <div>{ children }</div>}
+        <div className={classNames(styles.question, 'card')}>
+            <div onClick={ () => switchQuestion(title) }>
+                <h1 className='title' >{ title }</h1>
+                { activeQuestion === title && <div style={{marginTop: 16}}>{ children }</div>}
+            </div>
+
         </div>
     );
 };

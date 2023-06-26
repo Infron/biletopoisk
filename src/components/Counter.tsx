@@ -9,7 +9,7 @@ export default function Counter({ filmId, modalOpen }) {
     let decrement = cartActions.decrement(filmId);
     let increment = cartActions.increment(filmId);
 
-    if (filmAmount === 1) {
+    if (filmAmount === 1 && modalOpen) {
         decrement = modalOpen;
     }
 

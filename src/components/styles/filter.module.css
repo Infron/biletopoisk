@@ -1,0 +1,7 @@
+.filter {
+    max-width: 30vw;
+    margin-right: 24px;
+    height: max-content;
+    position: sticky;
+    top: calc(6vh + 24px);
+}

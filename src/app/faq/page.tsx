@@ -2,10 +2,12 @@
 
 import React from "react";
 import Accordion from "@/components/Accordion";
+import classNames from "classnames";
 
 export default function FAQ(): React.ReactElement {
     return (
         <Accordion>
+            <h1 className={classNames('title', 'card', )} style={{marginBottom: 24}}>Вопросы-ответы</h1>
             <Accordion.Question title='Что такое Билетопоиск?'>
                 <p>Мы — крупнейший сервис о кино в рунете. На нем вы сможете посмотреть фильмы и сериалы, купить билеты в кино, узнать рейтинги популярных видео и интересные факты, поставить фильмам оценки, написать рецензии и дополнить описание фильмов.</p>
             </Accordion.Question>
